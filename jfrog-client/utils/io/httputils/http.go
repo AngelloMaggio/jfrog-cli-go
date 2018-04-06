@@ -250,7 +250,8 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 				err = downloadErr
 			}
 			log.Info("Doing the done for", i)
-			
+			log.Info("Waiting a second")
+			time.Sleep(time.Second*1)
 			wg.Done()
 		}(start, end, i)
 	}
@@ -314,8 +315,6 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 		return "", err
 	}
 	
-	log.Info("Waiting a second")
-	time.Sleep(time.Second*1)
 	
 	defer resp.Body.Close()
 
