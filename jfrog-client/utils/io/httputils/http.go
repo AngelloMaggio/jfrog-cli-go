@@ -272,7 +272,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 
 	tempFile, err := ioutil.TempFile(tempLocalPath, strconv.Itoa(currentSplit)+"_")
 	if errorutils.CheckError(err) != nil {
-		log.Info("err not nil dfr")
+		log.Info("err not nil dfr A", err)
 		return "", err
 	}
 	defer tempFile.Close()
@@ -283,7 +283,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails.Headers["Range"] = "bytes=" + strconv.FormatInt(start, 10) + "-" + strconv.FormatInt(end-1, 10)
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	if errorutils.CheckError(err) != nil {
-		log.Info("err not nil dfr")
+		log.Info("err not nil dfr B", err)
 		return "", err
 	}
 	defer resp.Body.Close()
