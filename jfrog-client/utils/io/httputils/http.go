@@ -209,6 +209,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	chuckPaths := make([]string, flags.SplitCount)
 	var err error
 	for i := 0; i < flags.SplitCount; i++ {
+		log.Info("DFC index ", i, " Err: ", err)
 		if err != nil {
 			break
 		}
@@ -264,6 +265,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails HttpClientDetails) (string, error) {
 
 	tempLocalPath, err := fileutils.GetTempDirPath()
+	log.Info("DFR tmp path:", tmpLocalPath)
 	if err != nil {
 		return "", err
 	}
