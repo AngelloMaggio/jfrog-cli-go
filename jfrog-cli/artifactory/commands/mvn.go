@@ -2,11 +2,11 @@ package commands
 
 import (
 	"errors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/config"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/fileutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/config"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/fileutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"github.com/spf13/viper"
 	"io"
 	"io/ioutil"

@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 )
 
 func BuildClean(buildName, buildNumber string) error {

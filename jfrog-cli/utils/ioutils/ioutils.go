@@ -2,8 +2,8 @@ package ioutils
 
 import (
 	"fmt"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/cliutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/cliutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
 	"golang.org/x/crypto/ssh/terminal"
 	"io"
 	"os"

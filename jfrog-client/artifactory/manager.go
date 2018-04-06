@@ -1,11 +1,11 @@
 package artifactory
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/auth/cert"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/services"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/services/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/httpclient"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/auth/cert"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/services"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/services/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/httpclient"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"net/http"
 	"io"
 )

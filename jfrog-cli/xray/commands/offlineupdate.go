@@ -4,17 +4,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/errors/httperrors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/fileutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/errors/httperrors"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/fileutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils"
 )
 
 const (

@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/accesskeys"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/accesskeys"
 )
 
 func ShowAllAccessKeys(config bintray.Config, org string) error {

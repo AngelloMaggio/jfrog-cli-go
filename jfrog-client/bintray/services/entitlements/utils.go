@@ -2,9 +2,9 @@ package entitlements
 
 import (
 	"errors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/auth"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/versions"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/auth"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/versions"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
 	"path"
 	"strings"
 )

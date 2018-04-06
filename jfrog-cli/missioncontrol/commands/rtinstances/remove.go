@@ -2,11 +2,11 @@ package rtinstances
 
 import (
 	"errors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/missioncontrol/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/config"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/missioncontrol/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/config"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 )
 
 func Remove(instanceName string, flags *RemoveFlags) error {

@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/config"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/services"
-	clientutils "github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/config"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/services"
+	clientutils "github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 )
 
 func BuildScan(buildName, buildNumber string, artDetails *config.ArtifactoryDetails) error {

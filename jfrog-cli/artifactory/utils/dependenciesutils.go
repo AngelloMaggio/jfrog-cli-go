@@ -1,12 +1,12 @@
 package utils
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/bintray/commands"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/auth"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/fileutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/bintray/commands"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/auth"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/fileutils"
 	"path/filepath"
 	"strings"
 )

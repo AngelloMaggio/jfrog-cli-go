@@ -3,12 +3,12 @@ package rtinstances
 import (
 	"encoding/json"
 	"errors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/missioncontrol/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/cliutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/config"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/missioncontrol/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/cliutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/config"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"net/http"
 )
 

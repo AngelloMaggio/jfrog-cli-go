@@ -1,13 +1,13 @@
 package services
 
 import (
-	"github.com/jfrogdev/gofrog/parallel"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/auth"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/artifactory/services/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/errors/httperrors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/httpclient"
-	clientutils "github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/gofrog/parallel"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/auth"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/artifactory/services/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/errors/httperrors"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/httpclient"
+	clientutils "github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"net/http"
 )
 

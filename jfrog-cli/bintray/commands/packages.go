@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/packages"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/packages"
 )
 
 func CreatePackage(config bintray.Config, params *packages.Params) error {

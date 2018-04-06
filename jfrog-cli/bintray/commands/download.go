@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services"
 )
 
 func DownloadFile(config bintray.Config, params *services.DownloadFileParams) (totalDownloded, totalFailed int, err error) {

@@ -2,9 +2,9 @@ package server
 
 import (
 	"crypto/tls"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/tests/proxy/server/certificate"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils"
-	clilog "github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/tests/proxy/server/certificate"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils"
+	clilog "github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"io"
 	"log"
 	"net"

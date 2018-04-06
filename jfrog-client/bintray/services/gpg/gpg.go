@@ -2,14 +2,14 @@ package gpg
 
 import (
 	"errors"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/auth"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/bintray/services/versions"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/httpclient"
-	clientutils "github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/errorutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/auth"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/bintray/services/versions"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/httpclient"
+	clientutils "github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/errorutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"net/http"
 	"path"
 )
