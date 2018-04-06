@@ -83,12 +83,12 @@ func getHttpClient(transport *http.Transport) *http.Client {
 func Send(method string, url string, content []byte, allowRedirect bool, closeBody bool, httpClientsDetails HttpClientDetails) (*http.Response, []byte, string, error) {
 	var req *http.Request
 	var err error
-	log.Info("Content for Send", content)
-	log.Info("Close Body", closeBody)
+	log.Info("Inside Send")
 	if content != nil {
+		log.Info("Content Not Nil")
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
-		
 		log.Info("Send err not nil", err)
+		
 	} else {
 		req, err = http.NewRequest(method, url, nil)
 		
@@ -113,8 +113,7 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	
 	
 	tr := &http.Transport{
-		MaxIdleConns:       20,
-		IdleConnTimeout:    30 * time.Second,
+		MaxIdleConns:       0,
 		DisableKeepAlives: true,
 		
 	}
@@ -293,6 +292,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	tempLocalPath, err := fileutils.GetTempDirPath()
 	log.Info("DFR tmp path:", tempLocalPath)
 	if err != nil {
+		log.Info("-----a------")
 		return "", err
 	}
 
@@ -308,6 +308,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	}
 	httpClientsDetails.Headers["Range"] = "bytes=" + strconv.FormatInt(start, 10) + "-" + strconv.FormatInt(end-1, 10)
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
+	
 	if errorutils.CheckError(err) != nil {
 		log.Info("---B----")
 		return "", err
