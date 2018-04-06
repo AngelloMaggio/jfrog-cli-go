@@ -3,13 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/commands"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils/spec"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/config"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/tests"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/fileutils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/commands"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils/spec"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/config"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/tests"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/fileutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"io"
 	"io/ioutil"
 	"os"
@@ -19,7 +19,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/jfrog/inttestutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/jfrog/inttestutils"
 )
 
 func InitBuildToolsTests() {

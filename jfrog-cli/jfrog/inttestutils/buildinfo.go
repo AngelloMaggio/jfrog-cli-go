@@ -2,9 +2,9 @@ package inttestutils
 
 import (
 	"encoding/json"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils/buildinfo"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/log"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils/buildinfo"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/log"
 	"net/http"
 	"testing"
 )

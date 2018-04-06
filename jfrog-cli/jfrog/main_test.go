@@ -4,7 +4,7 @@ import (
 	"flag"
 	"os"
 	"testing"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/tests"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/tests"
 )
 
 func TestMain(m *testing.M) {

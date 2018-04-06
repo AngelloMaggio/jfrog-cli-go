@@ -4,15 +4,15 @@ import (
 	"errors"
 	"fmt"
 	"github.com/buger/jsonparser"
-	buildutils "github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/artifactory/utils/buildinfo"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/utils/tests"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-client/utils/io/httputils"
+	buildutils "github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/artifactory/utils/buildinfo"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/utils/tests"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-client/utils/io/httputils"
 	"io/ioutil"
 	"os"
 	"strconv"
 	"testing"
-	"github.com/jfrogdev/jfrog-cli-go/jfrog-cli/jfrog/inttestutils"
+	"github.com/AngelloMaggio/jfrog-cli-go/jfrog-cli/jfrog/inttestutils"
 )
 
 func TestBuildAddDependenciesFromHomeDir(t *testing.T) {
