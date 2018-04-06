@@ -90,6 +90,7 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 		log.Info("Send err not nil", err)
 	} else {
 		req, err = http.NewRequest(method, url, nil)
+		req.Close = true
 		log.Info("Send err is nil", err)
 	}
 	if errorutils.CheckError(err) != nil {
