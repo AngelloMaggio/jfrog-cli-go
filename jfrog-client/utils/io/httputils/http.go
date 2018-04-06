@@ -81,9 +81,10 @@ func getHttpClient(transport *http.Transport) *http.Client {
 }
 
 func Send(method string, url string, content []byte, allowRedirect bool, closeBody bool, httpClientsDetails HttpClientDetails) (*http.Response, []byte, string, error) {
+	log.Info("Inside Send")
 	var req *http.Request
 	var err error
-	log.Info("Inside Send")
+	
 	if content != nil {
 		log.Info("Content Not Nil")
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
@@ -231,6 +232,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	mod := flags.FileSize % int64(flags.SplitCount)
 	chuckPaths := make([]string, flags.SplitCount)
 	var err error
+	var int increment := 0
 	for i := 0; i < flags.SplitCount; i++ {
 		log.Info("DFC index ", i, " Err: ", err)
 		if err != nil {
@@ -245,9 +247,11 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 		requestClientDetails := httpClientsDetails.Clone()
 		go func(start, end int64, i int) {
 			var downloadErr error
+			increment := increment+1
+			time.Sleep(time.Second*increment)
 			chuckPaths[i], downloadErr = downloadFileRange(flags, start, end, i, logMsgPrefix, *requestClientDetails)
-			log.Info("Waiting a second", downloadErr)
-			time.Sleep(time.Second*1)
+			//log.Info("Waiting a second", downloadErr)
+			//time.Sleep(time.Second*1)
 			if downloadErr != nil {
 				err = downloadErr
 			}
@@ -259,7 +263,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	wg.Wait()
 
 	if err != nil {
-		log.Info("------b---")
+		log.Info("------b-----")
 		return err
 	}
 
