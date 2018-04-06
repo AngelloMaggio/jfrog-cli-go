@@ -113,8 +113,9 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	
 	
 	tr := &http.Transport{
-		MaxIdleConns:       10,
+		MaxIdleConns:       20,
 		IdleConnTimeout:    30 * time.Second,
+		DisableKeepAlives: true,
 		
 	}
 	//client := getHttpClient(httpClientsDetails.Transport)
