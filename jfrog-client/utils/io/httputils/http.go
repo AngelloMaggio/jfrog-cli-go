@@ -265,7 +265,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails HttpClientDetails) (string, error) {
 
 	tempLocalPath, err := fileutils.GetTempDirPath()
-	log.Info("DFR tmp path:", tmpLocalPath)
+	log.Info("DFR tmp path:", tempLocalPath)
 	if err != nil {
 		return "", err
 	}
