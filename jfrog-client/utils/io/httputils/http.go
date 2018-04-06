@@ -26,6 +26,7 @@ func sendGetLeaveBodyOpen(url string, allowRedirect bool, httpClientsDetails Htt
 
 func sendGetForFileDownload(url string, allowRedirect bool, httpClientsDetails HttpClientDetails) (*http.Response, string, error) {
 	resp, _, redirectUrl, err := sendGetLeaveBodyOpen(url, allowRedirect, httpClientsDetails)
+	log.Info("SGFFD err ", err)
 	return resp, redirectUrl, err
 }
 
@@ -83,11 +84,15 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 	var err error
 	if content != nil {
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
+		log.Info("Send err not nil", err)
 	} else {
 		req, err = http.NewRequest(method, url, nil)
+		log.Info("Send err is nil", err)
 	}
 	if errorutils.CheckError(err) != nil {
+		log.Info("Send errorutils is not nil", err)
 		return nil, nil, "", err
+		
 	}
 
 	return doRequest(req, allowRedirect, closeBody, httpClientsDetails)
@@ -101,6 +106,7 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 
 	client := getHttpClient(httpClientsDetails.Transport)
 	if !allowRedirect {
+		log.Info("doRequest not allowRedirect")
 		client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
 			redirectUrl = req.URL.String()
 			return errors.New("redirect")
