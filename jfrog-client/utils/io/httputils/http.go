@@ -249,6 +249,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 		go func(start, end int64, i int) {
 			var downloadErr error
 			increment += 1
+			log.Info("Waiting ", increment, "seconds")
 			time.Sleep(time.Second*increment)
 			chuckPaths[i], downloadErr = downloadFileRange(flags, start, end, i, logMsgPrefix, *requestClientDetails)
 			//log.Info("Waiting a second", downloadErr)
