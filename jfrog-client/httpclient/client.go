@@ -110,6 +110,7 @@ func (jc *HttpClient) doRequest(req *http.Request, allowRedirect bool, closeBody
 
 	resp, err = client.Do(req)
 	if !allowRedirect && err != nil {
+		log.Info("----c-----")
 		return
 	}
 
@@ -118,6 +119,7 @@ func (jc *HttpClient) doRequest(req *http.Request, allowRedirect bool, closeBody
 		return
 	}
 	if closeBody {
+		log.Info("If closebody --")
 		defer resp.Body.Close()
 		respBody, _ = ioutil.ReadAll(resp.Body)
 	}
@@ -188,7 +190,7 @@ func (jc *HttpClient) DownloadFile(downloadFileDetails *DownloadFileDetails, log
 
 func (jc *HttpClient) DownloadFileNoRedirect(downloadPath, localPath, fileName string, httpClientsDetails httputils.HttpClientDetails) (*http.Response, string, error) {
 	downloadFileDetails := &DownloadFileDetails{DownloadPath: downloadPath, LocalPath: localPath, FileName: fileName}
-	return jc.downloadFile(downloadFileDetails, "", false, httpClientsDetails, 0, false)
+	return jc.downloadFile(downloadFileDetails, "", false, httpClientsDetails, 3, false)
 }
 
 func (jc *HttpClient) downloadFile(downloadFileDetails *DownloadFileDetails, logMsgPrefix string, allowRedirect bool,
