@@ -295,7 +295,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails.Headers["Range"] = "bytes=" + strconv.FormatInt(start, 10) + "-" + strconv.FormatInt(end-1, 10)
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	if errorutils.CheckError(err) != nil {
-		log("---B----")
+		log.Info("---B----")
 		return "", err
 	}
 	defer resp.Body.Close()
