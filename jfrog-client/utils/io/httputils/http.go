@@ -16,6 +16,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 )
 
 var UserAgent string
@@ -86,11 +87,11 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 	log.Info("Close Body", closeBody)
 	if content != nil {
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
-		req.Close = true
+		
 		log.Info("Send err not nil", err)
 	} else {
 		req, err = http.NewRequest(method, url, nil)
-		req.Close = true
+		
 		log.Info("Send err is nil", err)
 	}
 	if errorutils.CheckError(err) != nil {
@@ -114,6 +115,7 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 		log.Info("doRequest not allowRedirect")
 		client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
 			redirectUrl = req.URL.String()
+			log.Info("Real redrectUrl", redirectUrl)
 			return errors.New("redirect")
 		}
 	}
@@ -128,6 +130,7 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 		return
 	}
 	if closeBody {
+		log.Info("if closeBody")
 		defer resp.Body.Close()
 		respBody, _ = ioutil.ReadAll(resp.Body)
 	}
@@ -299,6 +302,10 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 		log.Info("---B----")
 		return "", err
 	}
+	
+	log.Info("Waiting a second")
+	time.Sleep(time.Seconds*1)
+	
 	defer resp.Body.Close()
 
 	log.Info(logMsgPrefix+"["+strconv.Itoa(currentSplit)+"]:", resp.Status+"...")
