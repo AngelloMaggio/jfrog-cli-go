@@ -84,7 +84,6 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 	var err error
 	log.Info("Content for Send", content)
 	log.Info("Close Body", closeBody)
-	log.Info("Http client details", HttpClientDetails)
 	if content != nil {
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
 		log.Info("Send err not nil", err)
