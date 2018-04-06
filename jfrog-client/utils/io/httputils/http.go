@@ -116,7 +116,7 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	//	MaxIdleConns:       0,
 	//	DisableKeepAlives: true,
 		
-	}
+	//}
 	client := getHttpClient(httpClientsDetails.Transport)
 	//client := getHttpClient(tr)
 	
