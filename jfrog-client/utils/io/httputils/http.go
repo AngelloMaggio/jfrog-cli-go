@@ -26,7 +26,7 @@ func sendGetLeaveBodyOpen(url string, allowRedirect bool, httpClientsDetails Htt
 
 func sendGetForFileDownload(url string, allowRedirect bool, httpClientsDetails HttpClientDetails) (*http.Response, string, error) {
 	resp, _, redirectUrl, err := sendGetLeaveBodyOpen(url, allowRedirect, httpClientsDetails)
-	log.Info("SGFFD err ", err)
+	log.Info("SGFFD err ", err, allowRedirect)
 	return resp, redirectUrl, err
 }
 
@@ -82,6 +82,9 @@ func getHttpClient(transport *http.Transport) *http.Client {
 func Send(method string, url string, content []byte, allowRedirect bool, closeBody bool, httpClientsDetails HttpClientDetails) (*http.Response, []byte, string, error) {
 	var req *http.Request
 	var err error
+	log.Info("Content for Send", content)
+	log.Info("Close Body", closeBody)
+	log.Info("Http client details", HttpClientDetails)
 	if content != nil {
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
 		log.Info("Send err not nil", err)
@@ -94,6 +97,7 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 		return nil, nil, "", err
 		
 	}
+	log.Info("Requet is: ", req)
 
 	return doRequest(req, allowRedirect, closeBody, httpClientsDetails)
 }
