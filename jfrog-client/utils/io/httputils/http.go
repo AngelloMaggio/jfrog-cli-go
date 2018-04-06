@@ -110,7 +110,16 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	addUserAgentHeader(req)
 	copyHeaders(httpClientsDetails, req)
 
-	client := getHttpClient(httpClientsDetails.Transport)
+	
+	
+	tr := &http.Transport{
+		MaxIdleConns:       10,
+		IdleConnTimeout:    30 * time.Second,
+		 DisableKeepAlives: True,
+	}
+	//client := getHttpClient(httpClientsDetails.Transport)
+	client := getHttpClient(tr)
+	
 	if !allowRedirect {
 		log.Info("doRequest not allowRedirect")
 		client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
