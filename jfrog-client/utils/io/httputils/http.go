@@ -304,7 +304,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	}
 	
 	log.Info("Waiting a second")
-	time.Sleep(time.Seconds*1)
+	time.Sleep(time.Second*1)
 	
 	defer resp.Body.Close()
 
