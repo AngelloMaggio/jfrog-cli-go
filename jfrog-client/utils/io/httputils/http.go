@@ -231,8 +231,6 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	mod := flags.FileSize % int64(flags.SplitCount)
 	chuckPaths := make([]string, flags.SplitCount)
 	var err error
-	var increment int 
-	increment = 0
 	for i := 0; i < flags.SplitCount; i++ {
 		log.Info("DFC index ", i, " Err: ", err)
 		if err != nil {
