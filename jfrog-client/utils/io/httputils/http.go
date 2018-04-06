@@ -235,6 +235,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 			if downloadErr != nil {
 				err = downloadErr
 			}
+			log.Info("Doing the done for", i)
 			wg.Done()
 		}(start, end, i)
 	}
