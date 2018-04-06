@@ -87,6 +87,7 @@ func Send(method string, url string, content []byte, allowRedirect bool, closeBo
 	log.Info("Close Body", closeBody)
 	if content != nil {
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
+		req.Close = true
 		log.Info("Send err not nil", err)
 	} else {
 		req, err = http.NewRequest(method, url, nil)
@@ -237,7 +238,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 				err = downloadErr
 			}
 			log.Info("Doing the done for", i)
-			time.Sleep(time.Second * 3)
+			
 			wg.Done()
 		}(start, end, i)
 	}
