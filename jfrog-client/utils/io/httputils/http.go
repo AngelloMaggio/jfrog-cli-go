@@ -117,8 +117,8 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 		DisableKeepAlives: true,
 		
 	}
-	//client := getHttpClient(httpClientsDetails.Transport)
-	client := getHttpClient(tr)
+	client := getHttpClient(httpClientsDetails.Transport)
+	//client := getHttpClient(tr)
 	
 	if !allowRedirect {
 		log.Info("doRequest not allowRedirect")
@@ -246,18 +246,20 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 		go func(start, end int64, i int) {
 			var downloadErr error
 			chuckPaths[i], downloadErr = downloadFileRange(flags, start, end, i, logMsgPrefix, *requestClientDetails)
+			log.Info("Waiting a second", downloadErr)
+			time.Sleep(time.Second*1)
 			if downloadErr != nil {
 				err = downloadErr
 			}
 			log.Info("Doing the done for", i)
-			log.Info("Waiting a second")
-			time.Sleep(time.Second*1)
+			
 			wg.Done()
 		}(start, end, i)
 	}
 	wg.Wait()
 
 	if err != nil {
+		log.Info("------b---")
 		return err
 	}
 
@@ -310,10 +312,10 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails.Headers["Range"] = "bytes=" + strconv.FormatInt(start, 10) + "-" + strconv.FormatInt(end-1, 10)
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	
-	//if errorutils.CheckError(err) != nil {
-	//	log.Info("---B----")
-	//	return "", err
-	//}
+	if errorutils.CheckError(err) != nil {
+		log.Info("---B----")
+		return "", err
+	}
 	
 	
 	defer resp.Body.Close()
