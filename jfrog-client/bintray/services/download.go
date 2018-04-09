@@ -210,7 +210,7 @@ func (ds *DownloadService) downloadBintrayFile(downloadParams *DownloadFileParam
 		// we got a redirect to DSN download URL. In case of the later, we should download the file
 		// concurrently from the DSN URL.
 		// 'err' is not nil in case 'redirectUrl' was returned.
-		log.Info("Redirect Url: ", redirectUrl)
+		
                 if redirectUrl != "" {
 			err = nil
 			concurrentDownloadFlags := httputils.ConcurrentDownloadFlags{
