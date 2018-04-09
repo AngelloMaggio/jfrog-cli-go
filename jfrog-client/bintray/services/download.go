@@ -164,7 +164,7 @@ func (ds *DownloadService) downloadBintrayFile(downloadParams *DownloadFileParam
 	if downloadParams.IncludeUnpublished {
 		url += "?include_unpublished=1"
 	}
-	log.Info(logMsgPrefix+"Downloading Test", downloadPath)
+	log.Info(logMsgPrefix+"Downloading", downloadPath)
 
 	httpClientsDetails := ds.BintrayDetails.CreateHttpClientDetails()
 	details, err := httputils.GetRemoteFileDetails(url, httpClientsDetails)
