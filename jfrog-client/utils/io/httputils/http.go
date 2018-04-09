@@ -128,7 +128,6 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	resp, err = client.Do(req)
 	if !allowRedirect && err != nil {
 		log.Debug("Error not nil, probably redirecting", err)
-		log.Error(err)
 		return
 	}
 
