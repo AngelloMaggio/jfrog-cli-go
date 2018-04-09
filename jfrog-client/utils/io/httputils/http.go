@@ -27,7 +27,7 @@ func sendGetLeaveBodyOpen(url string, allowRedirect bool, httpClientsDetails Htt
 
 func sendGetForFileDownload(url string, allowRedirect bool, httpClientsDetails HttpClientDetails) (*http.Response, string, error) {
 	resp, _, redirectUrl, err := sendGetLeaveBodyOpen(url, allowRedirect, httpClientsDetails)
-	log.Info("SGFFD err ", err, allowRedirect)
+	log.Info("SGFFD err, Most likely due to EOF error. Package will not be downloaded.", err, allowRedirect)
 	return resp, redirectUrl, err
 }
 
@@ -81,26 +81,24 @@ func getHttpClient(transport *http.Transport) *http.Client {
 }
 
 func Send(method string, url string, content []byte, allowRedirect bool, closeBody bool, httpClientsDetails HttpClientDetails) (*http.Response, []byte, string, error) {
-	log.Info("Inside Send")
 	var req *http.Request
 	var err error
 	
 	if content != nil {
-		log.Info("Content Not Nil")
+		log.Warn("Content Not Nil")
 		req, err = http.NewRequest(method, url, bytes.NewBuffer(content))
-		log.Info("Send err not nil", err)
+		log.Warn("Send err not nil", err)
 		
 	} else {
 		req, err = http.NewRequest(method, url, nil)
 		
-		log.Info("Send err is nil", err)
 	}
 	if errorutils.CheckError(err) != nil {
-		log.Info("Send errorutils is not nil", err)
+		log.Warn("Error occurred on request during Send function.", err)
 		return nil, nil, "", err
 		
 	}
-	log.Info("Requet is: ", req)
+	log.Debug("Request made: ", req)
 
 	return doRequest(req, allowRedirect, closeBody, httpClientsDetails)
 }
@@ -122,25 +120,25 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 	//client := getHttpClient(tr)
 	
 	if !allowRedirect {
-		log.Info("doRequest not allowRedirect")
 		client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
 			redirectUrl = req.URL.String()
-			log.Info("Real redrectUrl", redirectUrl)
 			return errors.New("redirect")
 		}
 	}
 
 	resp, err = client.Do(req)
 	if !allowRedirect && err != nil {
+		log.Warn("Error during doRequest function, and redirect not allowed", err)
 		return
 	}
 
 	err = errorutils.CheckError(err)
 	if err != nil {
+		log.Warn("Error during doRequest function")
 		return
 	}
 	if closeBody {
-		log.Info("if closeBody")
+		
 		defer resp.Body.Close()
 		respBody, _ = ioutil.ReadAll(resp.Body)
 	}
@@ -234,7 +232,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	var err error
 	var increment int
 	for i := 0; i < flags.SplitCount; i++ {
-		log.Info("DFC index ", i, " Err: ", err)
+		//log.Info("DFC index ", i, " Err: ", err)
 		if err != nil {
 			break
 		}
@@ -251,12 +249,12 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 			log.Info("Waiting ", increment, "seconds")
 			time.Sleep(time.Second*time.Duration(increment))
 			chuckPaths[i], downloadErr = downloadFileRange(flags, start, end, i, logMsgPrefix, *requestClientDetails)
-			//log.Info("Waiting a second", downloadErr)
+
 			time.Sleep(time.Second*1)
 			if downloadErr != nil {
 				err = downloadErr
 			}
-			log.Info("Doing the done for", i)
+			log.Info("Finishing split number ", i)
 			
 			wg.Done()
 		}(start, end, i)
@@ -264,7 +262,6 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	wg.Wait()
 
 	if err != nil {
-		log.Info("------b-----")
 		return err
 	}
 
@@ -298,15 +295,15 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	httpClientsDetails HttpClientDetails) (string, error) {
 
 	tempLocalPath, err := fileutils.GetTempDirPath()
-	log.Info("DFR tmp path:", tempLocalPath)
+	log.Debug("Storing split in temporary path:", tempLocalPath)
 	if err != nil {
-		log.Info("-----a------")
+		log.Debug("Error during downloading file range at current split", currentSplit)
 		return "", err
 	}
 
 	tempFile, err := ioutil.TempFile(tempLocalPath, strconv.Itoa(currentSplit)+"_")
 	if errorutils.CheckError(err) != nil {
-		log.Info("----A-----")
+		log.Debug("Error during creation of temporary file at", tempLocalPath)
 		return "", err
 	}
 	defer tempFile.Close()
@@ -318,7 +315,7 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	
 	if errorutils.CheckError(err) != nil {
-		log.Info("---B----")
+		log.Debug("Error on file range download function after sending request.")
 		return "", err
 	}
 	
