@@ -230,7 +230,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	mod := flags.FileSize % int64(flags.SplitCount)
 	chuckPaths := make([]string, flags.SplitCount)
 	var err error
-	var increment int
+	var increment float64
 	for i := 0; i < flags.SplitCount; i++ {
 		log.Debug("Starting split index ", i, " Err: ", err)
 		if err != nil {
