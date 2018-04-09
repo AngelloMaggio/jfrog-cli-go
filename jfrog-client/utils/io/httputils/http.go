@@ -127,13 +127,15 @@ func doRequest(req *http.Request, allowRedirect bool, closeBody bool, httpClient
 
 	resp, err = client.Do(req)
 	if !allowRedirect && err != nil {
-		log.Warn("Error during doRequest function, and redirect not allowed", err)
+		log.Debug("Error not nil, probably redirecting", err)
+		log.Error(err)
 		return
 	}
 
 	err = errorutils.CheckError(err)
 	if err != nil {
 		log.Warn("Error during doRequest function")
+		log.Error(err)
 		return
 	}
 	if closeBody {
@@ -314,7 +316,9 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	
 	if errorutils.CheckError(err) != nil {
-		log.Debug("Error on file range download function after sending request.")
+		log.Info("Error on file download, probably EOF. File may not have downloaded.")
+		log.Debug("File Range Error:", err)
+		log.Error(err)
 		return "", err
 	}
 	
