@@ -316,9 +316,8 @@ func downloadFileRange(flags ConcurrentDownloadFlags, start, end int64, currentS
 	resp, _, err := sendGetForFileDownload(flags.DownloadPath, false, httpClientsDetails)
 	
 	if errorutils.CheckError(err) != nil {
-		log.Info("Error on file download, probably EOF. File may not have downloaded.")
+		log.Error("Error on file download, probably EOF. File may not have downloaded.")
 		log.Debug("File Range Error:", err)
-		log.Error(err)
 		return "", err
 	}
 	
