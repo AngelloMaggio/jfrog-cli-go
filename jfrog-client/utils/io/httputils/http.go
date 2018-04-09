@@ -231,6 +231,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	mod := flags.FileSize % int64(flags.SplitCount)
 	chuckPaths := make([]string, flags.SplitCount)
 	var err error
+	var increment int
 	for i := 0; i < flags.SplitCount; i++ {
 		log.Info("DFC index ", i, " Err: ", err)
 		if err != nil {
@@ -245,12 +246,12 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 		requestClientDetails := httpClientsDetails.Clone()
 		go func(start, end int64, i int) {
 			var downloadErr error
-			//increment += 1
-			//log.Info("Waiting ", increment, "seconds")
-			//time.Sleep(time.Second*time.Duration(increment))
+			increment += 1
+			log.Info("Waiting ", increment, "seconds")
+			time.Sleep(time.Second*time.Duration(increment))
 			chuckPaths[i], downloadErr = downloadFileRange(flags, start, end, i, logMsgPrefix, *requestClientDetails)
 			//log.Info("Waiting a second", downloadErr)
-			//time.Sleep(time.Second*1)
+			time.Sleep(time.Second*1)
 			if downloadErr != nil {
 				err = downloadErr
 			}
