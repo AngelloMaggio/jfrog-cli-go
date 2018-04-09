@@ -27,7 +27,6 @@ func sendGetLeaveBodyOpen(url string, allowRedirect bool, httpClientsDetails Htt
 
 func sendGetForFileDownload(url string, allowRedirect bool, httpClientsDetails HttpClientDetails) (*http.Response, string, error) {
 	resp, _, redirectUrl, err := sendGetLeaveBodyOpen(url, allowRedirect, httpClientsDetails)
-	log.Info("SGFFD err, Most likely due to EOF error. Package will not be downloaded.", err, allowRedirect)
 	return resp, redirectUrl, err
 }
 
@@ -232,7 +231,7 @@ func DownloadFileConcurrently(flags ConcurrentDownloadFlags, logMsgPrefix string
 	var err error
 	var increment int
 	for i := 0; i < flags.SplitCount; i++ {
-		//log.Info("DFC index ", i, " Err: ", err)
+		log.Debug("Starting split index ", i, " Err: ", err)
 		if err != nil {
 			break
 		}
